@@ -20,6 +20,9 @@
     border-radius: 25px;
     align-items: center;
 }
+#btuh{
+    margin-left: 20px;
+}
 #Crt-input{
     width: 426px;
     border-radius: 25px;
@@ -126,14 +129,12 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: white;
 }
 #Icon2{
     margin-top: 4px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: white;
 }
 .Nickname{
     color: black;
@@ -213,4 +214,50 @@
 }
 #Time{
     margin-left: 4px;
+}
+#SignOut{
+    margin-top: 6px;
+    width: 140px;
+    height: 52px;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0px;
+    font-size: 25px;
+}
+#Taskbar-Content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 1200px;
+}
+.Taskbar{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+} 
+.cd{
+    margin-top: 20px ;
+    width: 100px;
+    height: 100%;
+    color: white; 
+}
+#CD{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 300px;
+    margin-left: 70px;
+}
+.container{
+    width: 100px;
+    margin: 0px;
+}
+.posts{
+    top: 40px;
 }

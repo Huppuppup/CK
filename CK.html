@@ -6,13 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pines UI</title>
-    <style>
-        [x-cloak] {
-            display: none
-        }
-    </style>
-    <!-- Include the Alpine library on your page -->
-    <script src="https://unpkg.com/alpinejs" defer></script>
     <!-- Include the TailwindCSS library on your page -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="CK.css">
@@ -23,16 +16,23 @@
         <!-- Element Here -->
 
         <section class="relative w-full bg-white">
-            <section class="relative w-full px-8 text-gray-700 bg-white body-font"
-                data-tails-scripts="//unpkg.com/alpinejs" {!! $attributes ?? '' !!}>
+            <section id="Taskbar" class="Taskbar overflow-hidden fixed top-0 w-full flex flex-row z-50 w-full px-8 text-gray-700 bg-black body-font"
+                >
                 <div
-                    class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
+                    class="flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row">
                     <a href="#_"
-                        class="relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none">Glob</a>
+                        class="relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-white select-none">Glob</a>
                 </div>
+                <div id="Taskbar-Content">
+                    <div id="CD">
+                        <div class="cd" id="Home">Home</div>
+                        <div class="cd" id="ListFriend">Friends</div>
+                        <div class="cd" id="MyAccount">My account</div>
+                    </div>
+                </div>
+                <a onclick="out()" id="SignOut" href="/SignIn/SignIn.html">Sign out</a>
             </section>
 
-            <div class="absolute w-full h-32 bg-gradient-to-b from-gray-100 to-white"></div>
             <div class="posts flex flex-col relative w-full px-5 py-10 mx-auto sm:py-12 md:py-0 md:px-10 max-w-7xl">
                 
                 <div id="btuh" class="flex flex-col items-center h-full gap-10 pb-10 mt-8 sm:mt-16">
@@ -53,19 +53,7 @@
                         </div>
                         <div id="imG"></div>
                     </div>
-                    <div id="Content">
-                        <div class="Post">
-                            <div class="Post-head">
-                                <div id="Icon2"></div>
-                                <div class="Nickname"><p class="abc1">Bruh</p></div>
-                            </div>
-                            <div class="Post-content">
-                                <div id="Time">alfkajflajflakjf</div>
-                                <div class="Status"><p class="abc2">Hello</p></div>
-                                <img class="Status_img" src="https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    <div id="Content"></div>
                 </div>
             </div>
         </section>

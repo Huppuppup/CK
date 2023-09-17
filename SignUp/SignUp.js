@@ -3,6 +3,7 @@ const ListPost = JSON.parse(localStorage.getItem("ListPost")) ?? [];
 const Accounts = JSON.parse(localStorage.getItem("Accounts")) ?? [];
 const USER = JSON.parse(localStorage.getItem("USER")) ?? [];
 const PASS = JSON.parse(localStorage.getItem("PASS")) ?? [];
+const bruhPost = JSON.parse(localStorage.getItem("bruhPost")) ??[];
 function submit() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -29,8 +30,9 @@ function submit() {
         localStorage.setItem("Accounts", JSON.stringify(Accounts))
         localStorage.setItem("USER", JSON.stringify(USER))
         localStorage.setItem("PASS", JSON.stringify(PASS))
-
+        localStorage.setItem("bruhPost", JSON.stringify(bruhPost))
         alert("Sign up successfully")
+        window.location.replace("http://127.0.0.1:5500/CK.html")
     }
     return false;
 }
