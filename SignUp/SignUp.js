@@ -4,6 +4,7 @@ const Accounts = JSON.parse(localStorage.getItem("Accounts")) ?? [];
 const USER = JSON.parse(localStorage.getItem("USER")) ?? [];
 const PASS = JSON.parse(localStorage.getItem("PASS")) ?? [];
 const bruhPost = JSON.parse(localStorage.getItem("bruhPost")) ??[];
+const ListFriend = JSON.parse(localStorage.getItem("ListFriend")) ?? [];
 function submit() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -25,6 +26,7 @@ function submit() {
         USER.push(username)
         PASS.push(password)
         ListPost.push([])
+        ListFriend.push([])
         localStorage.setItem("ListPost",JSON.stringify(ListPost))
         localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
         localStorage.setItem("Accounts", JSON.stringify(Accounts))

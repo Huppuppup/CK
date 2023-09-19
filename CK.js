@@ -1,12 +1,15 @@
 const ListPost = JSON.parse(localStorage.getItem("ListPost"))
+const ListFriend = JSON.parse(localStorage.getItem("ListFriend"))
 const USER = JSON.parse(localStorage.getItem("USER"))
 const IMG = document.getElementById("imG")
 const Account = JSON.parse(localStorage.getItem("Accounts"))
 const currentUser = JSON.parse(localStorage.getItem("CurrentUser"))
 const currentPlace = USER.indexOf(currentUser.User)
+const currentListFriend = ListFriend[USER.indexOf(currentUser.User)]
 document.getElementById("Icon1").style.backgroundColor = currentUser.Icon
 var imgDIS = false
-const bruhPost = JSON.parse(localStorage.getItem("bruhPost")) 
+var Friend = false
+const bruhPost = JSON.parse(localStorage.getItem("bruhPost"))
 // const bruhPost = [
 //     {
 //         User: "Red",
@@ -133,9 +136,9 @@ function creatPost() {
             Img: document.getElementById("img-input").value
         }
         ListPost[currentPlace].unshift(Post)
-        localStorage.setItem("ListPost",JSON.stringify(ListPost))
+        localStorage.setItem("ListPost", JSON.stringify(ListPost))
         bruhPost.unshift(Post)
-        localStorage.setItem("bruhPost",JSON.stringify(bruhPost))
+        localStorage.setItem("bruhPost", JSON.stringify(bruhPost))
         document.getElementById("img-input").value = ""
         document.getElementById("Crt-input").value = ""
     }
@@ -152,8 +155,8 @@ function creatPost() {
 //     }
 // }
 
-for(let i = 0; i < bruhPost.length; i+=1){
-    if(bruhPost[i].Img == ""){
+for (let i = 0; i < bruhPost.length; i += 1) {
+    if (bruhPost[i].Img == "") {
         document.getElementById("Content").insertAdjacentHTML("beforeend", `<div class="Post">
     <div class="Post-head">
         <div onclick="inspect('${bruhPost[i].User}')" style="background-color: ${bruhPost[i].Icon};" id="Icon2"></div>
@@ -165,7 +168,7 @@ for(let i = 0; i < bruhPost.length; i+=1){
     </div>
 </div>`)
     }
-    else{
+    else {
         document.getElementById("Content").insertAdjacentHTML("beforeend", `<div class="Post">
     <div class="Post-head">
         <div onclick="inspect('${bruhPost[i].User}')" style="background-color: ${bruhPost[i].Icon};" id="Icon2"></div>
@@ -183,13 +186,256 @@ function out() {
     currentUser.User = ""
     currentUser.Pass = ""
     currentUser.Icon = ""
-    localStorage.setItem("CurrentUser",JSON.stringify(currentUser))
+    localStorage.setItem("CurrentUser", JSON.stringify(currentUser))
 }
 function inspect(x) {
     const xUser = x
     const xIcon = Account[USER.indexOf(x)].icon
     const xListPost = ListPost[USER.indexOf(x)]
-    console.log(xUser);
-    console.log(xIcon);
-    console.log(xListPost);
+    document.getElementById("vsContent").innerHTML = ""
+    document.getElementById("Home").style.backgroundColor = "black"
+    document.getElementById("Home").style.color = "white"
+    document.getElementById("ListFriend").style.backgroundColor = "black"
+    document.getElementById("ListFriend").style.color = "white"
+    document.getElementById("MyAccount").style.backgroundColor = "black"
+    document.getElementById("MyAccount").style.color = "white"
+    document.getElementById("Post-crt").style.display = "none"
+    document.getElementById("Content").style.display = "none"
+    document.getElementById("Profile").style.display = "flex"
+    document.getElementById("vsContent").style.display = "flex"
+    document.getElementById("Icon3").style.backgroundColor = xIcon
+    document.getElementById("c123").innerHTML = xUser
+    if (xUser == currentUser.User) {
+        document.getElementById("addFriend").style.display = "none"
+        document.getElementById("Profile").style.width = "540px"
+        if (xListPost.length == 0) {
+            document.getElementById("Content").insertAdjacentHTML("beforeend", "There is no post")
+        }
+        else {
+            for (let i = 0; i < xListPost.length; i += 1) {
+                if (xListPost[i].Img == "") {
+                    document.getElementById("vsContent").insertAdjacentHTML("beforeend", `<div class="Post">
+                <div class="Post-head">
+                    <div style="background-color: ${xListPost[i].Icon};" id="Icon2"></div>
+                    <div class="Nickname"><p class="abc1">${bruhPost[i].User}</p></div>
+                </div>
+                <div class="Post-content">
+                    <div id="Time">${xListPost[i].Hour}:${xListPost[i].Minute} / ${xListPost[i].Month}-${xListPost[i].Day}-${xListPost[i].Year}</div>
+                    <div class="Status"><p class="abc2">${xListPost[i].Status}</p></div>
+                </div>
+            </div>`)
+                }
+                else {
+                    document.getElementById("vsContent").insertAdjacentHTML("beforeend", `<div class="Post">
+                <div class="Post-head">
+                    <div style="background-color: ${xListPost[i].Icon};" id="Icon2"></div>
+                    <div class="Nickname"><p class="abc1">${xListPost[i].User}</p></div>
+                </div>
+                <div class="Post-content">
+                    <div id="Time">${xListPost[i].Hour}:${xListPost[i].Minute} / ${xListPost[i].Month}-${xListPost[i].Day}-${xListPost[i].Year}</div>
+                    <div class="Status"><p class="abc2">${xListPost[i].Status}</p></div>
+                    <img class="Status_img" src="${xListPost[i].Img}" alt="">
+                </div>
+            </div>`)
+                }
+            }
+        }
+    }
+    else {
+        document.getElementById("addFriend").style.display = "flex"
+        document.getElementById("Profile").style.width = "700px"
+        Friend = false
+        if (currentListFriend.includes(document.getElementById("c123").innerHTML)) {
+            Friend = true
+            document.getElementById("addFriend").innerHTML = "Unfriend"
+        }
+        else {
+            Friend = false
+            document.getElementById("addFriend").innerHTML = "Add friend"
+        }
+        if (xListPost.length == 0) {
+            document.getElementById("Content").insertAdjacentHTML("beforeend", "There is no post")
+        }
+        else {
+            for (let i = 0; i < xListPost.length; i += 1) {
+                if (xListPost[i].Img == "") {
+                    document.getElementById("vsContent").insertAdjacentHTML("beforeend", `<div class="Post">
+                <div class="Post-head">
+                    <div style="background-color: ${xListPost[i].Icon};" id="Icon2"></div>
+                    <div class="Nickname"><p class="abc1">${bruhPost[i].User}</p></div>
+                </div>
+                <div class="Post-content">
+                    <div id="Time">${xListPost[i].Hour}:${xListPost[i].Minute} / ${xListPost[i].Month}-${xListPost[i].Day}-${xListPost[i].Year}</div>
+                    <div class="Status"><p class="abc2">${xListPost[i].Status}</p></div>
+                </div>
+            </div>`)
+                }
+                else {
+                    document.getElementById("vsContent").insertAdjacentHTML("beforeend", `<div class="Post">
+                <div class="Post-head">
+                    <div style="background-color: ${xListPost[i].Icon};" id="Icon2"></div>
+                    <div class="Nickname"><p class="abc1">${xListPost[i].User}</p></div>
+                </div>
+                <div class="Post-content">
+                    <div id="Time">${xListPost[i].Hour}:${xListPost[i].Minute} / ${xListPost[i].Month}-${xListPost[i].Day}-${xListPost[i].Year}</div>
+                    <div class="Status"><p class="abc2">${xListPost[i].Status}</p></div>
+                    <img class="Status_img" src="${xListPost[i].Img}" alt="">
+                </div>
+            </div>`)
+                }
+            }
+        }
+    }
+}
+function back() {
+    document.getElementById("vsContent").innerHTML = ""
+    document.getElementById("Post-crt").style.display = "flex"
+    document.getElementById("Content").style.display = "block"
+    document.getElementById("Profile").style.display = "none"
+    document.getElementById("vsContent").style.display = "none"
+    document.getElementById("vsContent").innerHTML = ""
+    document.getElementById("p123").style.display = "none"
+}
+
+
+function add() {
+    if (Friend == true) {
+        currentListFriend.splice(currentListFriend.indexOf(document.getElementById("c123").innerHTML), 1)
+        Friend = false
+        document.getElementById("addFriend").innerHTML = "Add friend"
+        localStorage.setItem("ListFriend", JSON.stringify(ListFriend))
+    }
+    else if (Friend == false) {
+        currentListFriend.unshift(document.getElementById("c123").innerHTML)
+        Friend = true
+        document.getElementById("addFriend").innerHTML = "Unfriend"
+        localStorage.setItem("ListFriend", JSON.stringify(ListFriend))
+    }
+}
+
+function MyAccount() {
+    const currentListPost = ListPost[USER.indexOf(currentUser.User)]
+    document.getElementById("Post-crt").style.display = "none"
+    document.getElementById("Content").style.display = "none"
+    document.getElementById("Profile").style.display = "flex"
+    document.getElementById("vsContent").style.display = "flex"
+    document.getElementById("Icon3").style.backgroundColor = currentUser.Icon
+    document.getElementById("c123").innerHTML = currentUser.User
+    document.getElementById("p123").style.display = "none"
+    if (currentListPost.length == 0) {
+        document.getElementById("Content").insertAdjacentHTML("beforeend", "There is no post")
+    }
+    else {
+        for (let i = 0; i < currentListPost.length; i += 1) {
+            if (currentListPost[i].Img == "") {
+                document.getElementById("addFriend").style.display = "none"
+                document.getElementById("Profile").style.width = "540px"
+                document.getElementById("vsContent").insertAdjacentHTML("beforeend", `<div class="Post">
+            <div class="Post-head">
+                <div style="background-color: ${currentListPost[i].Icon};" id="Icon2"></div>
+                <div class="Nickname"><p class="abc1">${bruhPost[i].User}</p></div>
+            </div>
+            <div class="Post-content">
+                <div id="Time">${currentListPost[i].Hour}:${currentListPost[i].Minute} / ${currentListPost[i].Month}-${currentListPost[i].Day}-${currentListPost[i].Year}</div>
+                <div class="Status"><p class="abc2">${currentListPost[i].Status}</p></div>
+            </div>
+        </div>`)
+            }
+            else {
+                document.getElementById("addFriend").style.display = "none"
+                document.getElementById("Profile").style.width = "540px"
+                document.getElementById("vsContent").insertAdjacentHTML("beforeend", `<div class="Post">
+            <div class="Post-head">
+                <div style="background-color: ${currentListPost[i].Icon};" id="Icon2"></div>
+                <div class="Nickname"><p class="abc1">${currentListPost[i].User}</p></div>
+            </div>
+            <div class="Post-content">
+                <div id="Time">${currentListPost[i].Hour}:${currentListPost[i].Minute} / ${currentListPost[i].Month}-${currentListPost[i].Day}-${currentListPost[i].Year}</div>
+                <div class="Status"><p class="abc2">${currentListPost[i].Status}</p></div>
+                <img class="Status_img" src="${currentListPost[i].Img}" alt="">
+            </div>
+        </div>`)
+            }
+        }
+    }
+}
+function changeColorH() {
+    document.getElementById("Home").style.backgroundColor = "black"
+    document.getElementById("Home").style.color = "white"
+    document.getElementById("ListFriend").style.backgroundColor = "black"
+    document.getElementById("ListFriend").style.color = "white"
+    document.getElementById("MyAccount").style.backgroundColor = "black"
+    document.getElementById("MyAccount").style.color = "white"
+    document.getElementById("Home").style.backgroundColor = "white"
+    document.getElementById("Home").style.color = "black"
+}
+function changeColorL() {
+    document.getElementById("Home").style.backgroundColor = "black"
+    document.getElementById("Home").style.color = "white"
+    document.getElementById("ListFriend").style.backgroundColor = "black"
+    document.getElementById("ListFriend").style.color = "white"
+    document.getElementById("MyAccount").style.backgroundColor = "black"
+    document.getElementById("MyAccount").style.color = "white"
+    document.getElementById("ListFriend").style.backgroundColor = "white"
+    document.getElementById("ListFriend").style.color = "black"
+}
+function changeColorM() {
+    document.getElementById("Home").style.backgroundColor = "black"
+    document.getElementById("Home").style.color = "white"
+    document.getElementById("ListFriend").style.backgroundColor = "black"
+    document.getElementById("ListFriend").style.color = "white"
+    document.getElementById("MyAccount").style.backgroundColor = "black"
+    document.getElementById("MyAccount").style.color = "white"
+    document.getElementById("MyAccount").style.backgroundColor = "white"
+    document.getElementById("MyAccount").style.color = "black"
+}
+
+
+
+function genFrd() {
+    document.getElementById("Profile").style.display = "none"
+    document.getElementById("vsContent").innerHTML = ""
+    document.getElementById("Post-crt").style.display = "none"
+    document.getElementById("Content").style.display = "none"
+    document.getElementById("vsContent").style.display = "flex"
+    if (currentListFriend.length == 0) {
+        document.getElementById("p123").style.display = "block"
+        document.getElementById("vsContent").style.display = "none"
+    }
+    else if (currentListFriend.length > 0) {
+        for (let i = 0; i < currentListFriend.length; i += 1) {
+            console.log(i);
+            document.getElementById("vsContent").insertAdjacentHTML("afterbegin", `<div id="Profile2">
+            <div style="background-color: ${Account[USER.indexOf(currentListFriend[i])].icon};" id="Icon32"></div>
+            <div id="vsName2"><p id="c1232">${currentListFriend[i]}</p></div>
+            <div onclick="Unfriend('${currentListFriend[i]}')" id="addFriend2">Unfriend</div>
+        </div>
+        <br></br>`)
+        }
+    }
+}
+function Unfriend(b) {
+    console.log(b);
+    document.getElementById("Profile").style.display = "none"
+    currentListFriend.splice(currentListFriend.indexOf(b),1)
+    localStorage.setItem("ListFriend", JSON.stringify(ListFriend))
+    document.getElementById("vsContent").innerHTML = ""
+    document.getElementById("Post-crt").style.display = "none"
+    document.getElementById("Content").style.display = "none"
+    document.getElementById("vsContent").style.display = "flex"
+    if (currentListFriend.length == 0) {
+        document.getElementById("p123").style.display = "block"
+        document.getElementById("vsContent").style.display = "none"
+    }
+    else if (currentListFriend.length > 0) {
+        for (let i = 0; i < currentListFriend.length; i += 1) {
+            console.log(i);
+            document.getElementById("vsContent").insertAdjacentHTML("afterbegin", `<div id="Profile2">
+            <div style="background-color: ${Account[USER.indexOf(currentListFriend[i])].icon};" id="Icon32"></div>
+            <div id="vsName2"><p id="c1232">${currentListFriend[i]}</p></div>
+            <div onclick="Unfriend('${currentListFriend[i]}')" id="addFriend2">Unfriend</div>
+        </div>
+        <br></br>`)
+        }
+    }
 }

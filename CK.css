@@ -246,6 +246,9 @@
     width: 100px;
     height: 100%;
     color: white; 
+    margin-top: 0px;
+    padding-top: 20px;
+    text-align: center;
 }
 #CD{
     display: flex;
@@ -258,6 +261,112 @@
     width: 100px;
     margin: 0px;
 }
+#Profile{
+    color: white;
+    display: none;
+    flex-direction: row;
+    width: 700px;
+    height: auto;
+    background-color: black;
+    padding: 10px;
+    border-radius: 25px;
+    align-items: center;
+    margin-top: 20px;
+}
+#Icon3{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+#vsName{
+    color: black;
+    margin: 4px;
+    width: 470px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 0px;
+}
+#c123{
+    margin-left: 4px;
+    font-size: 22px;
+    word-wrap: normal;
+}
+#addFriend{
+    width: 140px;
+    height: 50px;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    font-size: 25px;
+}
+#vsContent{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
 .posts{
-    top: 40px;
+    top: 20px;
+}
+#Home{
+    background-color: white;
+    color: black;
+}
+#Profile2{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    height: auto;
+    background-color: black;
+    padding: 10px;
+    border-radius: 25px;
+    align-items: center;
+}
+#Icon32{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+#vsName2{
+    color: black;
+    margin: 4px;
+    width: 270px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 8px;
+    margin-right: 0px;
+}
+#c1232{
+    margin-left: 4px;
+    font-size: 22px;
+    word-wrap: normal;
+}
+#addFriend2{
+    width: 140px;
+    height: 50px;
+    color: black;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    font-size: 25px;
 }

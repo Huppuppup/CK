@@ -25,9 +25,9 @@
                 </div>
                 <div id="Taskbar-Content">
                     <div id="CD">
-                        <div class="cd" id="Home">Home</div>
-                        <div class="cd" id="ListFriend">Friends</div>
-                        <div class="cd" id="MyAccount">My account</div>
+                        <div onclick="back(),changeColorH()" class="cd" id="Home">Home</div>
+                        <div onclick="genFrd(),changeColorL()" class="cd" id="ListFriend">Friends</div>
+                        <div onclick="MyAccount(),changeColorM()" class="cd" id="MyAccount">My account</div>
                     </div>
                 </div>
                 <a onclick="out()" id="SignOut" href="/SignIn/SignIn.html">Sign out</a>
@@ -36,6 +36,13 @@
             <div class="posts flex flex-col relative w-full px-5 py-10 mx-auto sm:py-12 md:py-0 md:px-10 max-w-7xl">
                 
                 <div id="btuh" class="flex flex-col items-center h-full gap-10 pb-10 mt-8 sm:mt-16">
+                    <div id="Profile">
+                        <div id="Icon3"></div>
+                        <div id="vsName"><p id="c123"></p></div>
+                        <div onclick="add()" id="addFriend">Add friend</div>
+                    </div>
+                    <p id="p123" style="font-size: 25px; display: none;">There is no friend</p>
+                    <div id="vsContent"></div>
                     <div id="Post-crt">
                         <div id="b123">
                             <div id="Icon1"></div>
